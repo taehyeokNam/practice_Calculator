@@ -6,7 +6,11 @@ public class App {
 
     public static void main(String[] args) {
 
+        //입력 받을 숫자 저장할 변수
         int num1 = 0, num2 = 0;
+
+        //사칙연산 기호
+        char letter;
 
         Scanner sc = new Scanner(System.in);
 
@@ -40,7 +44,12 @@ public class App {
                 System.out.println("양의 정수만 입력하시오");
         }
 
+        System.out.println("사칙 연산 기호를 입력하세요");
+        letter = sc.next().charAt(0);
+
+
         System.out.println("num1 = " + num1);
         System.out.println("num2 = " + num2);
+        System.out.println("입력 받은 사칙 연산 기호 : " + letter);
     }
 }
