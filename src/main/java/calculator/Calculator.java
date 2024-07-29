@@ -53,17 +53,8 @@ public class Calculator {
             System.out.println(result);
     }
 
-    public Calculator(int input1, int input2, char sign) throws CalculatorException{
+    public Calculator(int input1, int input2, char operator){
 
-        if (sign == '/' && input2 == 0) {
-            //분모가 0일 때
-            throw new CalculatorException();
-        }
-        else if (sign != '+' && sign != '-' &&
-                sign != '*' && sign != '/') {
-            //사칙연산 이외의 기호가 들어왔을 때
-            throw new CalculatorException();
-        }
     };
 
 }
