@@ -13,7 +13,7 @@ public class App {
         String letter;
 
         //두 수의 계산 결과
-        int result[]= new int[10];
+        int[] result= new int[10];
 
         //계산한 횟수
         int count = 0;
@@ -75,19 +75,19 @@ public class App {
             switch (letter) {
                 case "+" :
                     result[count] = num1 + num2;
-                    System.out.println(num1 + " + " + num2 + " = " + result);
+                    System.out.println(num1 + " + " + num2 + " = " + result[count]);
                     break;
                 case "-" :
                     result[count] = num1 - num2;
-                    System.out.println(num1 + " - " + num2 + " = " + result);
+                    System.out.println(num1 + " - " + num2 + " = " + result[count]);
                     break;
                 case "*" :
                     result[count] = num1 * num2;
-                    System.out.println(num1 + " * " + num2 + " = " + result);
+                    System.out.println(num1 + " * " + num2 + " = " + result[count]);
                     break;
                 case "/" :
                     result[count] = num1 / num2;
-                    System.out.println(num1 + " / " + num2 + " = " + result);
+                    System.out.println(num1 + " / " + num2 + " = " + result[count]);
                     break;
             }
 
@@ -104,8 +104,6 @@ public class App {
 
             if(letter.equals("exit"))
                 break;
-            else
-                continue;
 
         }
     }
