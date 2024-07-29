@@ -21,6 +21,7 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
 
+
         while (true){
 
             System.out.println("사칙 연산 기호를 입력하세요");
@@ -71,6 +72,14 @@ public class App {
                 }
             }
 
+            if (count >= 10) {
+                //result에 저장된 값을 한 칸씩 당긴다.
+                for (int i = 0; i < 9; i++) {
+                    result[i] = result[i+1];
+                }
+                count = 9;
+            }
+
             //사칙 연산
             switch (letter) {
                 case "+" :
@@ -91,13 +100,11 @@ public class App {
                     break;
             }
 
-            //값을 출력하기전에 저장한 횟수 늘려주기
             count++;
 
-            // 0~9까지 저장하면 총 10개
-            // 10이되면 다시 0으로 초기화 시켜준다.
-            if (count == 10)
-                count = 0;
+            for (int array : result) {
+                System.out.println(array);
+            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             letter = sc.nextLine();
