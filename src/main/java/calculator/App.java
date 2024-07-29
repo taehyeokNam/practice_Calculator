@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class App {
@@ -12,15 +14,9 @@ public class App {
         //사칙연산 기호
         String letter;
 
-        //두 수의 계산 결과
-        int[] result= new int[10];
-
-        //계산한 횟수
-        int count = 0;
-
+        Queue<Integer> Result = new LinkedList<>();
 
         Scanner sc = new Scanner(System.in);
-
 
         while (true){
 
@@ -72,44 +68,45 @@ public class App {
                 }
             }
 
-            if (count >= 10) {
-                //result에 저장된 값을 한 칸씩 당긴다.
-                for (int i = 0; i < 9; i++) {
-                    result[i] = result[i+1];
-                }
-                count = 9;
-            }
-
             //사칙 연산
             switch (letter) {
                 case "+" :
-                    result[count] = num1 + num2;
-                    System.out.println(num1 + " + " + num2 + " = " + result[count]);
+                    Result.add(num1 + num2);
+                    System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
                     break;
                 case "-" :
-                    result[count] = num1 - num2;
-                    System.out.println(num1 + " - " + num2 + " = " + result[count]);
+                    Result.add(num1 - num2);
+                    System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
                     break;
                 case "*" :
-                    result[count] = num1 * num2;
-                    System.out.println(num1 + " * " + num2 + " = " + result[count]);
+                    Result.add(num1 * num2);
+                    System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
                     break;
                 case "/" :
-                    result[count] = num1 / num2;
-                    System.out.println(num1 + " / " + num2 + " = " + result[count]);
+                    Result.add(num1 / num2);
+                    System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
                     break;
             }
 
-            count++;
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시)");
+            letter = sc.nextLine();
 
-            for (int array : result) {
-                System.out.println(array);
-            }
+            if (letter.equals("remove"))
+                Result.poll();
+
+//            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회");
+//            letter = sc.nextLine();
+//
+//            if (letter.equals("inquiry")){
+//                for(Integer Array : Result){
+//                    System.out.println(Array);
+//                }
+//            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             letter = sc.nextLine();
 
-            if(letter.equals("exit"))
+            if (letter.equals("exit"))
                 break;
 
         }
