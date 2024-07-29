@@ -8,8 +8,6 @@ public class App {
 
     public static void main(String[] args) throws CalculatorException {
 
-
-
         //문자열 입력 받기
         String str;
         char choice;
@@ -22,75 +20,104 @@ public class App {
         choice = sc.next().charAt(0);
 
         if (choice == '1') {
+            ArithmeticCalculator Cal = new ArithmeticCalculator ();
 
+            while (true){
+
+                System.out.print("첫 번째 숫자를 입력하세요:");
+                int num1 = sc.nextInt();
+
+                System.out.print("두 번째 숫자를 입력하세요:");
+                int num2 = sc.nextInt();
+
+                System.out.print("사칙연산 기호를 입력하세요:");
+                char operator = sc.next().charAt(0);
+
+                Cal.setNum1(num1);
+                Cal.setNum2(num2);
+
+                //사칙 연산
+                switch (operator) {
+                    case '+' :
+                        if (Cal.getNum1() < 0 || Cal.getNum2() <0)
+                            throw new CalculatorException();
+                        Cal.Plus();
+                        break;
+                    case '-' :
+                        if (Cal.getNum1() < 0 || Cal.getNum2() <0)
+                            throw new CalculatorException();
+                        Cal.Sub();
+                        break;
+                    case '*' :
+                        if (Cal.getNum1() < 0 || Cal.getNum2() <0)
+                            throw new CalculatorException();
+                        Cal.Multi();
+                        break;
+                    case '/' :
+                        if (Cal.getNum2() == 0)
+                            throw new CalculatorException();
+                        Cal.Div();
+                        break;
+                    default:
+                        throw new CalculatorException();
+                }
+
+                sc.nextLine();
+
+                System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시)");
+                str = sc.nextLine();
+
+                if (str.equals("remove"))
+                    Cal.removeResult();
+
+                System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+                str = sc.nextLine();
+
+                if (str.equals("inquiry")){
+                    Cal.displayResult();
+                }
+
+                System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
+                str = sc.nextLine();
+
+                if (str.equals("exit"))
+                    break;
+
+            }
         }
         else if (choice == '2') {
+            CircleCalculator CircleCal = new CircleCalculator();
 
-        }
+            while (true) {
 
-        ArithmeticCalculator Cal = new ArithmeticCalculator ();
+                System.out.print("원의 반지름을 입력하세요 : ");
+                double radius = sc.nextDouble();
 
-        while (true){
+                sc.nextLine();
 
-            System.out.print("첫 번째 숫자를 입력하세요:");
-            int num1 = sc.nextInt();
+                //원의 반지름 셋팅
+                CircleCal.setRadius(radius);
 
-            System.out.print("두 번째 숫자를 입력하세요:");
-            int num2 = sc.nextInt();
+                //원의 넓이 계산
+                CircleCal.setCircleArea();
 
-            System.out.print("사칙연산 기호를 입력하세요:");
-            char operator = sc.next().charAt(0);
+                //계산된 원의 넓이 출력
+                CircleCal.calculateCircleArea();
 
-            Cal.setNum1(num1);
-            Cal.setNum2(num2);
+                //구한 원의 넓이 Queue에 저장
+                CircleCal.addCircleArea();
 
-            //사칙 연산
-            switch (operator) {
-                case '+' :
-                    if (Cal.getNum1() < 0 || Cal.getNum2() <0)
-                        throw new CalculatorException();
-                    Cal.Plus();
+                //저장된 원의 넓이 출력
+                CircleCal.displayResult();
+
+                System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
+                str = sc.nextLine();
+
+                if (str.equals("exit"))
                     break;
-                case '-' :
-                    if (Cal.getNum1() < 0 || Cal.getNum2() <0)
-                        throw new CalculatorException();
-                    Cal.Sub();
-                    break;
-                case '*' :
-                    if (Cal.getNum1() < 0 || Cal.getNum2() <0)
-                        throw new CalculatorException();
-                    Cal.Multi();
-                    break;
-                case '/' :
-                    if (Cal.getNum2() == 0)
-                        throw new CalculatorException();
-                    Cal.Div();
-                    break;
-                default:
-                    throw new CalculatorException();
+
+
             }
-
-            sc.nextLine();
-
-            System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시)");
-            str = sc.nextLine();
-
-            if (str.equals("remove"))
-                Cal.removeResult();
-
-            System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-            str = sc.nextLine();
-
-            if (str.equals("inquiry")){
-                Cal.displayResult();
-            }
-
-            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
-            str = sc.nextLine();
-
-            if (str.equals("exit"))
-                break;
-
         }
     }
 }

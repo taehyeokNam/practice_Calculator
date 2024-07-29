@@ -7,43 +7,42 @@ public class ArithmeticCalculator  {
     //입력 받는 두 양의 정수
     private int num1, num2;
 
-
-
+    //계산된 값이 저장된 Queue
     private Queue<Integer> Result = new LinkedList<>();
 
-    public ArithmeticCalculator (){
+    public ArithmeticCalculator() {
         Result.clear();
     }
 
     //두 수의 덧셈
-    public int Plus () {
+    public int Plus() {
 
-        Result.add(num1 + num2);
+        addResult(num1 + num2);
         System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
 
         return (num1 + num2);
     }
 
     //두 수의 뺄셈
-    public int Sub () {
+    public int Sub() {
 
-        Result.add(num1 - num2);
+        addResult(num1 - num2);
         System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
 
         return (num1 - num2);
     }
 
     //두 수의 곱셈
-    public int Multi () {
+    public int Multi() {
 
-        Result.add(num1 * num2);
+        addResult(num1 * num2);
         System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
 
         return (num1 * num2);
     }
 
     //input1을 input2로 나눈 몫
-    public int Div () {
+    public int Div() {
 
         Result.add(num1 / num2);
         System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
@@ -51,17 +50,17 @@ public class ArithmeticCalculator  {
         return (num1 / num2);
     }
 
-    void setResult(int value) {
+    public void addResult(int value) {
         Result.add(value);
     }
 
     //계산 결과 지우기
-    void removeResult() {
+    public void removeResult() {
         Result.remove();
     }
 
     //계산 결과 모두 보여주기
-    void displayResult() {
+    public void displayResult() {
         for (int result : Result)
             System.out.println(result);
     }
@@ -74,11 +73,11 @@ public class ArithmeticCalculator  {
         this.num2 = num2;
     }
 
-    public int getNum1(){
+    public int getNum1() {
         return num1;
     }
 
-    public int getNum2(){
+    public int getNum2() {
         return num1;
     }
 
@@ -88,7 +87,7 @@ public class ArithmeticCalculator  {
 }
 
 class CalculatorException extends Exception{
-    public CalculatorException(){
+    public CalculatorException() {
         System.out.println("잘못된 입력입니다.");
     }
 }
