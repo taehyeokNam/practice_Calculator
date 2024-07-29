@@ -13,7 +13,11 @@ public class App {
         String letter;
 
         //두 수의 계산 결과
-        int result;
+        int result[]= new int[10];
+
+        //계산한 횟수
+        int count = 0;
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -70,22 +74,30 @@ public class App {
             //사칙 연산
             switch (letter) {
                 case "+" :
-                    result = num1 + num2;
+                    result[count] = num1 + num2;
                     System.out.println(num1 + " + " + num2 + " = " + result);
                     break;
                 case "-" :
-                    result = num1 - num2;
+                    result[count] = num1 - num2;
                     System.out.println(num1 + " - " + num2 + " = " + result);
                     break;
                 case "*" :
-                    result = num1 * num2;
+                    result[count] = num1 * num2;
                     System.out.println(num1 + " * " + num2 + " = " + result);
                     break;
                 case "/" :
-                    result = num1 / num2;
+                    result[count] = num1 / num2;
                     System.out.println(num1 + " / " + num2 + " = " + result);
                     break;
             }
+
+            //값을 출력하기전에 저장한 횟수 늘려주기
+            count++;
+
+            // 0~9까지 저장하면 총 10개
+            // 10이되면 다시 0으로 초기화 시켜준다.
+            if (count == 10)
+                count = 0;
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             letter = sc.nextLine();
