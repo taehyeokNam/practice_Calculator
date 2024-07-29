@@ -14,10 +14,10 @@ public class Calculator {
     //두 수의 덧셈
     public int Plus () {
 
-        Result.add(num1 + num2);
+        this.Result.add(num1 + num2);
         System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
 
-        return (this.num1 + this.num2);
+        return (num1 + num2);
     }
 
     //두 수의 뺄셈
@@ -52,13 +52,13 @@ public class Calculator {
     }
 
     //계산 결과 지우기
-    void removeResult() {
-        Result.remove();
-    }
+//    void removeResult() {
+//        Result.remove();
+//    }
 
     //계산 결과 모두 보여주기
     void displayResult() {
-        for (int result : Result)
+        for (int result : this.Result)
             System.out.println(result);
     }
 

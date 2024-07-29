@@ -13,9 +13,9 @@ public class App {
         //사칙연산 기호
         String str;
 
-        Queue<Integer> Result = new LinkedList<>();
-
         Scanner sc = new Scanner(System.in);
+
+        Cal = new Calculator();
 
         while (true){
 
@@ -28,8 +28,6 @@ public class App {
             System.out.print("사칙연산 기호를 입력하세요:");
             char operator = sc.next().charAt(0);
 
-            Cal = new Calculator();
-
             Cal.setNum1(num1);
             Cal.setNum2(num2);
 
@@ -38,23 +36,22 @@ public class App {
                 case '+' :
                     if (Cal.getNum1() < 0 || Cal.getNum2() <0)
                         throw new CalculatorException();
-
-                    Result.add(Cal.Plus());
+                    Cal.Plus();
                     break;
                 case '-' :
                     if (Cal.getNum1() < 0 || Cal.getNum2() <0)
                         throw new CalculatorException();
-                    Result.add(Cal.Sub());
+                    Cal.Sub();
                     break;
                 case '*' :
                     if (Cal.getNum1() < 0 || Cal.getNum2() <0)
                         throw new CalculatorException();
-                    Result.add(Cal.Multi());
+                    Cal.Multi();
                     break;
                 case '/' :
                     if (Cal.getNum2() == 0)
                         throw new CalculatorException();
-                    Result.add(Cal.Div());
+                    Cal.Div();
                     break;
                 default:
                     throw new CalculatorException();
@@ -66,15 +63,13 @@ public class App {
             str = sc.nextLine();
 
             if (str.equals("remove"))
-                Result.poll();
+                Cal.removeResult();
 
             System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             str = sc.nextLine();
 
             if (str.equals("inquiry")){
-                for(Integer Array : Result){
-                    System.out.println(Array);
-                }
+                Cal.displayResult();
             }
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
