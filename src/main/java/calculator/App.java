@@ -8,14 +8,27 @@ public class App {
 
     public static void main(String[] args) throws CalculatorException {
 
-        Calculator Cal;
 
-        //사칙연산 기호
+
+        //문자열 입력 받기
         String str;
+        char choice;
 
         Scanner sc = new Scanner(System.in);
 
-        Cal = new Calculator();
+        System.out.println("1을 입력하면 사칙연산 계산기 사용");
+        System.out.println("2을 입력하면 원이 넓이 계산기 사용");
+
+        choice = sc.next().charAt(0);
+
+        if (choice == '1') {
+
+        }
+        else if (choice == '2') {
+
+        }
+
+        ArithmeticCalculator Cal = new ArithmeticCalculator ();
 
         while (true){
 

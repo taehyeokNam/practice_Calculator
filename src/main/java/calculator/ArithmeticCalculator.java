@@ -2,19 +2,23 @@ package calculator;
 
 import java.util.*;
 
-public class Calculator {
+public class ArithmeticCalculator  {
 
     //입력 받는 두 양의 정수
     private int num1, num2;
 
+
+
     private Queue<Integer> Result = new LinkedList<>();
 
-    public Calculator(){}
+    public ArithmeticCalculator (){
+        Result.clear();
+    }
 
     //두 수의 덧셈
     public int Plus () {
 
-        this.Result.add(num1 + num2);
+        Result.add(num1 + num2);
         System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
 
         return (num1 + num2);
@@ -58,7 +62,7 @@ public class Calculator {
 
     //계산 결과 모두 보여주기
     void displayResult() {
-        for (int result : this.Result)
+        for (int result : Result)
             System.out.println(result);
     }
 
@@ -76,6 +80,16 @@ public class Calculator {
 
     public int getNum2(){
         return num1;
+    }
+
+    public double calculateCircleArea(double radius) {
+        return CircleCalculator.PI * radius * radius;
+    }
+}
+
+class CalculatorException extends Exception{
+    public CalculatorException(){
+        System.out.println("잘못된 입력입니다.");
     }
 }
 
