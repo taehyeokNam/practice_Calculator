@@ -4,59 +4,79 @@ import java.util.*;
 
 public class Calculator {
 
-    private Queue<Integer> Result = new LinkedList<Integer>();
+    //입력 받는 두 양의 정수
+    private int num1, num2;
+
+    private Queue<Integer> Result = new LinkedList<>();
+
+    public Calculator(){}
 
     //두 수의 덧셈
-    public int Plus (int input1, int input2) {
+    public int Plus () {
 
-        this.Result.add(input1 + input2);
-        System.out.println(input1 + " + " + input2 + " = " + (input1 + input2));
+        Result.add(num1 + num2);
+        System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
 
-        return (input1 + input2);
+        return (this.num1 + this.num2);
     }
 
     //두 수의 뺄셈
-    public int Sub (int input1, int input2) {
+    public int Sub () {
 
-        this.Result.add(input1 - input2);
-        System.out.println(input1 + " - " + input2 + " = " + (input1 - input2));
+        Result.add(num1 - num2);
+        System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
 
-        return (input1 - input2);
+        return (num1 - num2);
     }
 
     //두 수의 곱셈
-    public int Multi (int input1, int input2) {
+    public int Multi () {
 
-        this.Result.add(input1 * input2);
-        System.out.println(input1 + " * " + input2 + " = " + (input1 * input2));
+        Result.add(num1 * num2);
+        System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
 
-        return (input1 * input2);
+        return (num1 * num2);
     }
 
     //input1을 input2로 나눈 몫
-    public int Div (int input1, int input2) {
+    public int Div () {
 
-        this.Result.add(input1 / input2);
-        System.out.println(input1 + " / " + input2 + " = " + (input1 / input2));
+        Result.add(num1 / num2);
+        System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
 
-        return (input1 / input2);
+        return (num1 / num2);
+    }
+
+    void setResult(int value) {
+        Result.add(value);
     }
 
     //계산 결과 지우기
-    void Delete() {
-        this.Result.remove();
+    void removeResult() {
+        Result.remove();
     }
 
     //계산 결과 모두 보여주기
-    void DisplayResult() {
-        for (int result : this.Result)
+    void displayResult() {
+        for (int result : Result)
             System.out.println(result);
     }
 
-    public Calculator(int input1, int input2, char operator){
+    public void setNum1(int num1) {
+        this.num1 = num1;
+    }
 
-    };
+    public void setNum2(int num2) {
+        this.num2 = num2;
+    }
 
+    public int getNum1(){
+        return num1;
+    }
+
+    public int getNum2(){
+        return num1;
+    }
 }
 
 

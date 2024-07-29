@@ -28,25 +28,33 @@ public class App {
             System.out.print("사칙연산 기호를 입력하세요:");
             char operator = sc.next().charAt(0);
 
-            Cal = new Calculator(num1, num2, operator);
+            Cal = new Calculator();
 
+            Cal.setNum1(num1);
+            Cal.setNum2(num2);
 
             //사칙 연산
             switch (operator) {
                 case '+' :
-                    Result.add(Cal.Plus(num1, num2));
+                    if (Cal.getNum1() < 0 || Cal.getNum2() <0)
+                        throw new CalculatorException();
+
+                    Result.add(Cal.Plus());
                     break;
                 case '-' :
-                    Result.add(Cal.Sub(num1, num2));
-
+                    if (Cal.getNum1() < 0 || Cal.getNum2() <0)
+                        throw new CalculatorException();
+                    Result.add(Cal.Sub());
                     break;
                 case '*' :
-                    Result.add(Cal.Multi(num1, num2));
+                    if (Cal.getNum1() < 0 || Cal.getNum2() <0)
+                        throw new CalculatorException();
+                    Result.add(Cal.Multi());
                     break;
                 case '/' :
-                    if (num2 == 0)
+                    if (Cal.getNum2() == 0)
                         throw new CalculatorException();
-                    Result.add(Cal.Div(num1, num2));
+                    Result.add(Cal.Div());
                     break;
                 default:
                     throw new CalculatorException();
@@ -70,7 +78,7 @@ public class App {
             }
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
-            str = sc.next();
+            str = sc.nextLine();
 
             if (str.equals("exit"))
                 break;
