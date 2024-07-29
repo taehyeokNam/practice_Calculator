@@ -52,9 +52,9 @@ public class Calculator {
     }
 
     //계산 결과 지우기
-//    void removeResult() {
-//        Result.remove();
-//    }
+    void removeResult() {
+        Result.remove();
+    }
 
     //계산 결과 모두 보여주기
     void displayResult() {
