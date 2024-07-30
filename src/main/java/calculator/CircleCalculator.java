@@ -2,7 +2,7 @@ package calculator;
 
 import java.util.*;
 
-public class CircleCalculator {
+public class CircleCalculator extends Calculator {
 
     //원의 반지름
     private double radius;
@@ -10,15 +10,12 @@ public class CircleCalculator {
     //원의 넓이
     private double circleArea;
 
-    //원의 넓이를 저장할 Queue
-    private Queue <Double> Result = new LinkedList();
-
     // static final은 상수를 선언할 때 쓴다.
     // 원주율은 일반적으로 3.14로 통일하여 쓰므로 static final로 선언한다.
     static final double PI = 3.14;
 
     public CircleCalculator() {
-        Result.clear();
+        super.clearResult();
     }
 
     public double calculateCircleArea() {
@@ -27,6 +24,8 @@ public class CircleCalculator {
     }
 
     public void setRadius( double radius) {
+        if(radius < 0)
+            return;
         this.radius = radius;
     }
 

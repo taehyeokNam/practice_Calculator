@@ -1,12 +1,10 @@
 package calculator;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
 public class App {
 
-    public static void main(String[] args) throws CalculatorException {
+    public static void main(String[] args) {
 
         //문자열 입력 받기
         String str;
@@ -15,12 +13,12 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("1을 입력하면 사칙연산 계산기 사용");
-        System.out.println("2을 입력하면 원이 넓이 계산기 사용");
+        System.out.println("2을 입력하면 원의 넓이 계산기 사용");
 
         choice = sc.next().charAt(0);
 
         if (choice == '1') {
-            ArithmeticCalculator Cal = new ArithmeticCalculator ();
+            Calculator cal = new Calculator();
 
             while (true){
 
@@ -33,33 +31,26 @@ public class App {
                 System.out.print("사칙연산 기호를 입력하세요:");
                 char operator = sc.next().charAt(0);
 
-                Cal.setNum1(num1);
-                Cal.setNum2(num2);
+                cal.setNum1(num1);
+                cal.setNum2(num2);
 
                 //사칙 연산
                 switch (operator) {
                     case '+' :
-                        if (Cal.getNum1() < 0 || Cal.getNum2() <0)
-                            throw new CalculatorException();
-                        Cal.Plus();
+                        cal.Add(num1, num2);
                         break;
                     case '-' :
-                        if (Cal.getNum1() < 0 || Cal.getNum2() <0)
-                            throw new CalculatorException();
-                        Cal.Sub();
+                        cal.Sub(num1, num2);
                         break;
                     case '*' :
-                        if (Cal.getNum1() < 0 || Cal.getNum2() <0)
-                            throw new CalculatorException();
-                        Cal.Multi();
+                        cal.Multi(num1, num2);
                         break;
                     case '/' :
-                        if (Cal.getNum2() == 0)
-                            throw new CalculatorException();
-                        Cal.Div();
+                        if (num2 ==0)
+                            throw new ArithmeticException("나눗셈 연산에서 분모에 0을 입력할 수 없습니다.");
+                        cal.Div(num1, num2);
                         break;
                     default:
-                        throw new CalculatorException();
                 }
 
                 sc.nextLine();
@@ -68,13 +59,13 @@ public class App {
                 str = sc.nextLine();
 
                 if (str.equals("remove"))
-                    Cal.removeResult();
+                    cal.removeResult();
 
                 System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 str = sc.nextLine();
 
                 if (str.equals("inquiry")){
-                    Cal.displayResult();
+                    cal.displayResult();
                 }
 
                 System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
@@ -86,7 +77,7 @@ public class App {
             }
         }
         else if (choice == '2') {
-            CircleCalculator CircleCal = new CircleCalculator();
+            CircleCalculator circleCal = new CircleCalculator();
 
             while (true) {
 
@@ -96,19 +87,19 @@ public class App {
                 sc.nextLine();
 
                 //원의 반지름 셋팅
-                CircleCal.setRadius(radius);
+                circleCal.setRadius(radius);
 
                 //원의 넓이 계산
-                CircleCal.setCircleArea();
+                circleCal.setCircleArea();
 
                 //계산된 원의 넓이 출력
-                CircleCal.calculateCircleArea();
+                circleCal.calculateCircleArea();
 
                 //구한 원의 넓이 Queue에 저장
-                CircleCal.addCircleArea();
+                circleCal.addCircleArea();
 
                 //저장된 원의 넓이 출력
-                CircleCal.displayResult();
+                circleCal.displayResult();
 
                 System.out.print("더 계산하시겠습니까? (exit 입력 시 종료)");
                 str = sc.nextLine();
